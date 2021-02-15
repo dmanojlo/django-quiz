@@ -1,20 +1,10 @@
 {% extends 'quiz/base.html' %}
 
 {% block content %}
-<h1>Quiz app</h1>
-
-{% for quiz in quiz_name %}
-<p>{{quiz.user}}</p>
-<p>{{quiz.name}}</p>
-{% endfor %}
-
-<h2>Quiz name</h2>
-
+<h1>Questions</h1>
 <form action="." method="post">
   {% csrf_token %}
   {{form.as_p}}
   <input type="submit" value="Submit">
-
 </form>
-
 {% endblock %}
