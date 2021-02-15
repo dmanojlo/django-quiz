@@ -20,3 +20,18 @@ class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ['text', 'is_correct']
+
+class TakeQuizForm(forms.ModelForm):
+    answer = forms.ModelChoiceField(queryset=Answer.objects.none(),
+                                    widget=forms.RadioSelect(),
+                                    required=True,
+                                    empty_label=None
+                                    )
+    class Meta:
+        model = Answer
+        fields = ['text']
+
+    def __init__(self, *args, **kwargs):
+        question = kwargs.pop('question')
+        super().__init__(*args, **kwargs)
+        self.fields['answer'].queryset = question.answers.order_by('text')

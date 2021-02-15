@@ -46,7 +46,7 @@
       {% endfor %}
     </div>
     <div class="card-footer">
-      <a class="btn btn-primary btn-sm">Add question</a>
+      <a href="{% url 'quiz:add_question' quiz.pk %}" class="btn btn-primary btn-sm">Add question</a>
     </div>
   </div>
 {% endblock %}

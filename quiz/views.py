@@ -12,7 +12,7 @@ from django.db import transaction
 # Create your views here.
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import QuizName, Question, Answer
-from .forms import QuizNameForm, QuestionForm, AnswerForm
+from .forms import QuizNameForm, QuestionForm, AnswerForm, TakeQuizForm
 # Create your views here.
 
 class QuizListView(ListView):
@@ -107,7 +107,7 @@ def question_answers(request, quiz_pk, question_pk):
         Answer,  # base model
         fields=('text', 'is_correct'),
         min_num=2,
-        extra = 1,
+        extra = 2,
         validate_min=True,
         max_num=10,
         validate_max=True
@@ -129,3 +129,21 @@ def question_answers(request, quiz_pk, question_pk):
         form = QuestionForm(instance=question)
         formset = AnswerFormSet(instance=question)
     return render(request, 'quiz/answers_list.html', {'form':form, 'formset': formset, 'quiz':quiz, 'question':question})
+
+#--------------------
+    #Students
+
+def take_quiz(request, pk):
+    quiz = get_object_or_404(QuizName, pk=pk)
+    question = get_object_or_404(Question, pk=pk, quiz = quiz)
+
+    if request.method == 'POST':
+        form = TakeQuizForm(question=question, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('quiz:take_quiz', pk)
+
+    else:
+        form = TakeQuizForm()
+
+    return render(request, 'quiz/take_quiz.html', {'quiz':quiz, 'form':form})
