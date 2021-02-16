@@ -29,7 +29,7 @@ class TakeQuizForm(forms.ModelForm):
                                     )
     class Meta:
         model = Answer
-        fields = ['text']
+        exclude = ('text', 'question', 'is_correct',)
 
     def __init__(self, *args, **kwargs):
         question = kwargs.pop('question')

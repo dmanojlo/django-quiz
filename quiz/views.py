@@ -133,17 +133,17 @@ def question_answers(request, quiz_pk, question_pk):
 #--------------------
     #Students
 
-def take_quiz(request, pk):
-    quiz = get_object_or_404(QuizName, pk=pk)
-    question = get_object_or_404(Question, pk=pk, quiz = quiz)
+def take_quiz(request, quiz_pk, question_pk):
+    quiz = get_object_or_404(QuizName, pk=quiz_pk)
+    question = get_object_or_404(Question, pk=question_pk, quiz = quiz)
 
     if request.method == 'POST':
-        form = TakeQuizForm(question=question, data=request.POST)
+        form = TakeQuizForm(request.POST, question=question)
         if form.is_valid():
             form.save()
-            return redirect('quiz:take_quiz', pk)
+            return redirect('quiz:take_quiz', quiz_pk, question_pk)
 
     else:
-        form = TakeQuizForm()
+        form = TakeQuizForm(question=question)
 
-    return render(request, 'quiz/take_quiz.html', {'quiz':quiz, 'form':form})
+    return render(request, 'quiz/take_quiz.html', {'quiz':quiz, 'form':form, 'question':question})
