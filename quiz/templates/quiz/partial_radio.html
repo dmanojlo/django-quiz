@@ -1,0 +1,17 @@
+<div class="bounce-in">
+  <h2 class="mb-3">{{ quiz.name }}</h2>
+  <p class="lead">{{ question.text }} {{qui}}</p>
+  </div>
+  <div class="fade-in">
+    <form id="ajax-test-form" method="post" action="{% url 'quiz:take_quiz' quiz.pk question.pk %}">
+      {% csrf_token %}
+      <p>PK is {{qui}}</p>
+      {% for radio in form.answer %}
+      <!-- id in input and for must be the same name to bind it together -->
+      <input type="radio" id="{{ radio.id_for_label }}" name="answer" value="{{ radio.data.value }}" required>
+      <label class="ans" answer="{{radio.choice_label}}" for="{{ radio.id_for_label }}">
+          {{ radio.choice_label}}
+      </label>
+    {% endfor %}
+    </form>
+</div>

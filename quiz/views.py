@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.template.loader import render_to_string
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -132,18 +133,29 @@ def question_answers(request, quiz_pk, question_pk):
 
 #--------------------
     #Students
-
+score = 0
 def take_quiz(request, quiz_pk, question_pk):
+    data = dict()
     quiz = get_object_or_404(QuizName, pk=quiz_pk)
     question = get_object_or_404(Question, pk=question_pk, quiz = quiz)
-
+    next_question = Question.objects.filter(quiz=quiz, id__gt=question_pk).order_by('id').first()
+    correct_answer = Answer.objects.get(question=question, is_correct=True)
+    global score
     if request.method == 'POST':
         form = TakeQuizForm(request.POST, question=question)
         if form.is_valid():
-            form.save()
-            return redirect('quiz:take_quiz', quiz_pk, question_pk)
+            if correct_answer == form.cleaned_data['answer']:
+                score += 1
+            if next_question != None:
+                #data['html_form'] = render_to_string('quiz/partial_radio.html', {'qui':14, 'ques':next_question.id, 'quiz':quiz, 'form':form, 'question':question, 'correct_answer': correct_answer}, request=request)
+                data['url'] = reverse('quiz:take_quiz', args=[quiz.pk, next_question.id]) #redirect to next question
+                return JsonResponse(data)
+            else:
+                messages.success(request, 'You have finished the quiz! Yor score is ' + str(score))
+                print(score)
+                score = 0
 
     else:
         form = TakeQuizForm(question=question)
 
-    return render(request, 'quiz/take_quiz.html', {'quiz':quiz, 'form':form, 'question':question})
+    return render(request, 'quiz/take_quiz.html', {'quiz':quiz, 'form':form, 'question':question, 'correct_answer': correct_answer})

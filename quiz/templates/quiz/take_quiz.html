@@ -2,13 +2,105 @@
 
 
 {% block content %}
-  <div class="progress mb-3">
-  </div>
-  <h2 class="mb-3">{{ quiz.name }}</h2>
-  <p class="lead">{{ question.text }}</p>
-  <form method="post" novalidate>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Next -></button>
-  </form>
+{% for message in messages %}
+<p>{{message}}</p>
+{% endfor %}
+
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+<h1 style="text-align:center;">Quiz page</h1>
+
+<div id="container">
+  {% include 'quiz/partial_radio.html' %}
+</div>
+
+
+
+  <script type="text/javascript">
+
+  var cor = {{correct_answer}}
+  console.log(cor.toString())
+   $(document).ready(function() {
+
+      $('#container').on('click', '.ans', function() {
+
+        $('.bounce-in').delay(200).fadeTo(500, 0);
+        var a = $(this).attr('answer');
+        console.log(a)
+        if(a!=='4'){
+            $(this).addClass('worngans');
+
+        }
+        else{
+          $(this).addClass('correct-answer');
+        }
+
+        $( ".fade-in" ).delay(800).animate({
+      opacity: "0.25",
+      right: "+100%"
+    }, 500, function() {
+      // Animation complete.
+    });
+        setTimeout(function () {
+          var form = $('#ajax-test-form');
+          form.submit(function(e) {
+              // prevent form submission
+              e.preventDefault();
+
+              // submit the form via Ajax
+              $.ajax({
+                  url: form.attr('action'),
+                  type: form.attr('method'),
+                  dataType: 'json',
+                  data: form.serialize(),
+                  success: function(data) {
+                      // Inject the result in the HTML
+                      //window.location = data.url  django url redirect in ajax success
+                      $('#container').load(data.url + ' #container')
+                  }
+              });
+          });
+          $("form").submit();
+        }, 1500);
+
+});
+
+  });
+  </script>
+
+  <!-- <script>
+  $(document).ready(function(){
+
+      var form = $('#ajax-test-form');
+      form.submit(function(e) {
+          // prevent form submission
+          e.preventDefault();
+
+          // submit the form via Ajax
+          $.ajax({
+              url: '/quiz/take_quiz/22/question/14/',
+              type: form.attr('method'),
+              dataType: 'html',
+              data: form.serialize(),
+              success: function() {
+                  // Inject the result in the HTML
+                  $('#container').html("<h1>Ovo je testis</h1>");
+              }
+          });
+      });
+  });
+  </script> -->
+
 {% endblock %}

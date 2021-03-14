@@ -16,7 +16,108 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" />
 
       <!-- Must be a different name for every app if we want to use different custom css  -->
+      <style >
+      input[type=radio] {
+  display:none;
+}
 
+
+.bounce-in{
+      text-align:center;
+      -webkit-animation-name: bounceIn;
+      -moz-animation-name: bounceIn;
+      -o-animation-name: bounceIn;
+      -ms-animation-name: bounceIn;
+      animation-name: bounceIn;
+      -webkit-animation-duration: .8s;
+      -moz-animation-duration: .8s;
+      -o-animation-duration: .8s;
+      -ms-animation-duration: .8s;
+      animation-duration: .8s;
+      -webkit-animation-timing-function: ease-out;
+      -moz-animation-timing-function: ease-out;
+      -o-animation-timing-function: ease-out;
+      -ms-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+  }
+
+@-webkit-keyframes bounceIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.7)
+    }
+
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.02)
+    }
+
+    100% {
+        -webkit-transform: scale(1)
+    }
+}
+
+
+
+.fade-in{
+  animation: fade-in ease 1s;
+  -webkit-animation: fade-in ease 1s;
+  position: relative;
+
+}
+
+@keyframes fade-in {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fade-in {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fade-in {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fade-in {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fade-in {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+input[type=radio] + label {
+  display:inline-block;
+width:95%;
+padding:10px;
+border:1px solid #ddd;
+margin-bottom:10px;
+cursor:pointer;
+}
+input[type=radio] + label:hover{ border:1px solid #000000;}
+
+.correct-answer{
+  background-color: #009900;
+  color:#fff;
+  border:1px solid yellow !important;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.worngans{ background-color:#F36;color:#fff; border:1px solid #F36 !important;-webkit-transition: all 0.2s ease-in-out;
+-moz-transition: all 0.2s ease-in-out;
+-o-transition: all 0.2s ease-in-out;
+-ms-transition: all 0.2s ease-in-out;
+transition: all 0.2s ease-in-out;}
+      </style>
   </head>
   <body>
     {% block content%}
