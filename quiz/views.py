@@ -40,9 +40,13 @@ class AnswerUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('quiz:quiz_list')
 
+class QuizStartView(ListView):
+    model = QuizName
+    template_name = 'quiz/start_quiz.html'
+
 class QuizNameCreateView(CreateView):
     model = QuizName
-    template_name = 'quiz/home.html'
+    template_name = 'quiz/index.html'
     form_class = QuizNameForm
 
     def form_valid(self, form):
@@ -134,7 +138,7 @@ def question_answers(request, quiz_pk, question_pk):
 #--------------------
     #Students
 score = 0
-def take_quiz(request, quiz_pk, question_pk):
+def start_quiz(request, quiz_pk, question_pk):
     data = dict()
     quiz = get_object_or_404(QuizName, pk=quiz_pk)
     question = get_object_or_404(Question, pk=question_pk, quiz = quiz)
@@ -148,7 +152,7 @@ def take_quiz(request, quiz_pk, question_pk):
                 score += 1
             if next_question != None:
                 #data['html_form'] = render_to_string('quiz/partial_radio.html', {'qui':14, 'ques':next_question.id, 'quiz':quiz, 'form':form, 'question':question, 'correct_answer': correct_answer}, request=request)
-                data['url'] = reverse('quiz:take_quiz', args=[quiz.pk, next_question.id]) #redirect to next question
+                data['url'] = reverse('quiz:start_quiz', args=[quiz.pk, next_question.id]) #redirect to next question
                 return JsonResponse(data)
             else:
                 messages.success(request, 'You have finished the quiz! Yor score is ' + str(score))
@@ -158,4 +162,4 @@ def take_quiz(request, quiz_pk, question_pk):
     else:
         form = TakeQuizForm(question=question)
 
-    return render(request, 'quiz/take_quiz.html', {'quiz':quiz, 'form':form, 'question':question, 'correct_answer': correct_answer})
+    return render(request, 'quiz/start_quiz.html', {'quiz':quiz, 'form':form, 'question':question, 'correct_answer': correct_answer})
