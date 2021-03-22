@@ -16,6 +16,19 @@ from .models import QuizName, Question, Answer
 from .forms import QuizNameForm, QuestionForm, AnswerForm, TakeQuizForm
 # Create your views here.
 
+
+class QuizChooseView(ListView):
+    model = QuizName
+    context_object_name = 'choose_quiz'
+    template_name = 'quiz/choose_quiz.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # we use related_name from models Question(quiz field has related_name = questions)
+        # to link the questions with quizname
+        context['questions'] = Question.objects.all()
+        return context
+
 class QuizListView(ListView):
     model = QuizName
     context_object_name = 'quiz_list'

@@ -75,9 +75,9 @@
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto">
                                 <a href="index.html" class="nav-item nav-link active">Home</a>
-                                <a href="{% url 'quiz:start_quiz' 1 1 %}" class="nav-item nav-link">Start quiz</a>
-                                <a href="about.html" class="nav-item nav-link">Create quiz</a>
-                                <a href="about.html" class="nav-item nav-link">About</a>
+                                <a href="{% url 'quiz:choose_quiz' %}" class="nav-item nav-link">Choose Quiz</a>
+                                <a href="{% url 'quiz:start_quiz' 1 1 %}" class="nav-item nav-link">Start Quiz</a>
+                                <a href="about.html" class="nav-item nav-link">Create Quiz</a>
                                 <a href="{% url 'quiz:quiz_update' 1 %}" class="nav-item nav-link">Project</a>
                                 <a href="contact.html" class="nav-item nav-link">Contact</a>
                             </div>
@@ -100,7 +100,7 @@
                         <div class="carousel-caption">
                             <p class="animated fadeInRight">How smart are you?</p>
                             <h1 class="animated fadeInLeft">Test your knowledge</h1>
-                            <a class="btn animated fadeInUp" href="https://htmlcodex.com/construction-company-website-template">Start quiz</a>
+                            <a class="btn animated fadeInUp" href="https://htmlcodex.com/construction-company-website-template">Choose quiz</a>
                         </div>
                     </div>
 
@@ -147,7 +147,7 @@
                                       <img class="flaticon-question" src="{% static 'img/question-mark.png' %}" alt="Question-mark">
                                 </div>
                                 <div class="feature-text">
-                                    <h3>Start Quiz</h3>
+                                    <h3>Choose Quiz</h3>
                                     <p>See if you know a thing or two</p>
                                 </div>
                             </div>
