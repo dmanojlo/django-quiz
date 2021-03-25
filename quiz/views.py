@@ -19,14 +19,19 @@ from .forms import QuizNameForm, QuestionForm, AnswerForm, TakeQuizForm
 
 class QuizChooseView(ListView):
     model = QuizName
-    context_object_name = 'choose_quiz'
     template_name = 'quiz/choose_quiz.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # we use related_name from models Question(quiz field has related_name = questions)
         # to link the questions with quizname
-        context['questions'] = Question.objects.all()
+        quiz_name = QuizName.objects.values_list('name', flat=True)
+        quiz_pk = QuizName.objects.values_list('pk', flat=True)
+        question_pk = []
+        for i in quiz_pk:
+            question_pk.append(Question.objects.values_list('pk', flat=True).get(pk=i))
+        myziped = zip(quiz_name, quiz_pk, question_pk)
+        context['questions'] = myziped
         return context
 
 class QuizListView(ListView):
@@ -164,13 +169,17 @@ def start_quiz(request, quiz_pk, question_pk):
             if correct_answer == form.cleaned_data['answer']:
                 score += 1
             if next_question != None:
+                data['form_is_valid'] = True
                 #data['html_form'] = render_to_string('quiz/partial_radio.html', {'qui':14, 'ques':next_question.id, 'quiz':quiz, 'form':form, 'question':question, 'correct_answer': correct_answer}, request=request)
                 data['url'] = reverse('quiz:start_quiz', args=[quiz.pk, next_question.id]) #redirect to next question
                 return JsonResponse(data)
             else:
-                messages.success(request, 'You have finished the quiz! Yor score is ' + str(score))
+                data['form_is_valid'] = False
+                data['message'] = 'Your miserable score is ' + str(score)
                 print(score)
                 score = 0
+                return JsonResponse(data)
+
 
     else:
         form = TakeQuizForm(question=question)

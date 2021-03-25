@@ -18,10 +18,8 @@
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'lib/flaticon/font/flaticon.css' %}">
         <link rel="stylesheet" href="{% static 'lib/animate/animate.min.css' %}">
         <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
-        <link rel="stylesheet" href="{% static 'lib/lightbox/css/lightbox.min.css' %}">
         <link rel="stylesheet" href="{% static 'lib/slick/slick.css' %}">
         <link rel="stylesheet" href="{% static 'lib/slick/slick-theme.css' %}">
 
@@ -265,7 +263,10 @@
             <div id="container">
                 {% include 'quiz/partial_radio.html' %}
             </div>
-            
+
+            <div class="mess">
+
+            </div>
 
             <!-- About End -->
 
@@ -322,148 +323,6 @@
                 </div>
             </div>
             <!-- Fact End -->
-
-
-            <!-- FAQs Start -->
-            <div class="faqs">
-                <div class="container">
-                    <div class="section-header text-center">
-                        <p>Frequently Asked Question</p>
-                        <h2>You May Ask</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div id="accordion-1">
-                                <div class="card wow fadeInLeft" data-wow-delay="0.1s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseOne" class="collapse" data-parent="#accordion-1">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.2s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" data-parent="#accordion-1">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.3s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseThree">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" data-parent="#accordion-1">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.4s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseFour">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseFour" class="collapse" data-parent="#accordion-1">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInLeft" data-wow-delay="0.5s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseFive">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseFive" class="collapse" data-parent="#accordion-1">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div id="accordion-2">
-                                <div class="card wow fadeInRight" data-wow-delay="0.1s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseSix">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseSix" class="collapse" data-parent="#accordion-2">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.2s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseSeven">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseSeven" class="collapse" data-parent="#accordion-2">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.3s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseEight">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseEight" class="collapse" data-parent="#accordion-2">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.4s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseNine">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseNine" class="collapse" data-parent="#accordion-2">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card wow fadeInRight" data-wow-delay="0.5s">
-                                    <div class="card-header">
-                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
-                                            Lorem ipsum dolor sit amet?
-                                        </a>
-                                    </div>
-                                    <div id="collapseTen" class="collapse" data-parent="#accordion-2">
-                                        <div class="card-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- FAQs End -->
 
 
             <!-- Footer Start -->
@@ -552,7 +411,6 @@
         <script src="{% static 'lib/wow/wow.min.js' %}"></script>
         <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
         <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
-        <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
         <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
         <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
         <script src="{% static 'lib/slick/slick.min.js' %}"></script>
@@ -562,8 +420,7 @@
 
         <script type="text/javascript">
 
-        var cor = {{correct_answer}}
-        console.log(cor.toString())
+
          $(document).ready(function() {
 
             $('#container').on('click', '.ans', function() {
@@ -571,7 +428,7 @@
               $('.bounce-in').delay(200).fadeTo(500, 0);
               var a = $(this).attr('answer');
               console.log(a)
-              if(a!==cor.toString()){
+              if(a!=='4'){
                   $(this).addClass('worngans');
 
               }
@@ -600,7 +457,19 @@
                         success: function(data) {
                             // Inject the result in the HTML
                             //window.location = data.url  django url redirect in ajax success
-                            $('#container').load(data.url + ' #container')
+                            if (data.form_is_valid) {
+                                $('#container').load(data.url + ' #container')
+                            }
+                            else {
+                              $('.card-header').empty();
+                              $(".bounce-in").animate({
+                            opacity: "1",
+                          }, 500, function() {
+                            // Animation complete.
+                            $('.card-header').html(data.message);
+                          });
+                            }
+
                         }
                     });
                 });

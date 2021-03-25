@@ -18,7 +18,6 @@
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'lib/flaticon/font/flaticon.css' %}">
         <link rel="stylesheet" href="{% static 'lib/animate/animate.min.css' %}">
         <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
         <link rel="stylesheet" href="{% static 'lib/lightbox/css/lightbox.min.css' %}">
@@ -140,12 +139,12 @@
             <div class="service">
                 <div class="container">
                     <div class="row">
-                      {% for quiz in choose_quiz %}
+                      {% for name, p, f in questions %}
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{forloop.counter}}s">
                             <div class="service-item">
-                              <a href="{% url 'quiz:start_quiz' 1 1 %}">
+                              <a href="{% url 'quiz:start_quiz' p f %}">
                                 <div class="service-text">
-                                    <h3>{{quiz.name}} {{quiz.pk}} {{questions.pk}}</h3>
+                                    <h3>{{name}}</h3>
                                 </div>
                                 </a>
                             </div>
