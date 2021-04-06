@@ -417,8 +417,8 @@ a:focus {
 /*******************************/
 .page-header {
     position: relative;
-    margin-bottom: 45px;
-    padding: 90px 0;
+    margin-bottom: 30px;
+    padding: 30px 0;
     text-align: center;
     background: #fdbe33;
 }
@@ -470,7 +470,7 @@ a:focus {
 
 @media (max-width: 991.98px) {
     .page-header {
-        padding: 60px 0;
+        padding: 20px 0;
     }
 
     .page-header h2 {
@@ -484,7 +484,7 @@ a:focus {
 
 @media (max-width: 767.98px) {
     .page-header {
-        padding: 45px 0;
+        padding: 20px 0;
     }
 
     .page-header h2 {

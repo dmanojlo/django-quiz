@@ -16,6 +16,7 @@ from .models import QuizName, Question, Answer
 from .forms import QuizNameForm, QuestionForm, AnswerForm, TakeQuizForm
 # Create your views here.
 
+import json
 
 class QuizChooseView(ListView):
     model = QuizName
