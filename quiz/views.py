@@ -30,7 +30,7 @@ class QuizChooseView(ListView):
         quiz_pk = QuizName.objects.values_list('pk', flat=True)
         question_pk = []
         for i in quiz_pk:
-            question_pk.append(Question.objects.values_list('pk', flat=True).get(pk=i))
+            question_pk.append(Question.objects.filter(quiz=i).values_list('pk', flat=True)[0])
         myziped = zip(quiz_name, quiz_pk, question_pk)
         context['questions'] = myziped
         return context
