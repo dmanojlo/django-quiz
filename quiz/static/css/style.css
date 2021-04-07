@@ -254,7 +254,7 @@ margin:0 auto;
     }
 
     .nav-bar .navbar {
-        padding: 10px;
+        padding: 13px;
     }
 
     .nav-bar .navbar-brand {
@@ -502,6 +502,9 @@ margin:0 auto;
         padding: 20px 0;
     }
 
+    .card-header h2{
+      font-size:1.4rem;
+    }
     .page-header h2 {
         font-size: 35px;
     }
@@ -599,6 +602,7 @@ margin:0 auto;
   position: relative;
   width: 50px;
   z-index: 3;
+  right:-2px;
 }
 
 .feature .feature-icon::after {
@@ -701,6 +705,10 @@ margin:0 auto;
     .about .about-img {
         margin-bottom: 30px;
         height: auto;
+    }
+    .about .about-text a.btn {
+    color: #fdbe33;
+    background:  #030f27;
     }
 }
 

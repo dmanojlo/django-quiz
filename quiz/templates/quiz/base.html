@@ -1,130 +1,226 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Quisko</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Construction Company Website Template" name="keywords">
+        <meta content="Construction Company Website Template" name="description">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" />
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-      <!-- Must be a different name for every app if we want to use different custom css  -->
-      <style >
-      input[type=radio] {
-  display:none;
-}
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'lib/animate/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'lib/slick/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'lib/slick/slick-theme.css' %}">
 
+        <!-- Template Stylesheet -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-.bounce-in{
-      text-align:center;
-      -webkit-animation-name: bounceIn;
-      -moz-animation-name: bounceIn;
-      -o-animation-name: bounceIn;
-      -ms-animation-name: bounceIn;
-      animation-name: bounceIn;
-      -webkit-animation-duration: .8s;
-      -moz-animation-duration: .8s;
-      -o-animation-duration: .8s;
-      -ms-animation-duration: .8s;
-      animation-duration: .8s;
-      -webkit-animation-timing-function: ease-out;
-      -moz-animation-timing-function: ease-out;
-      -o-animation-timing-function: ease-out;
-      -ms-animation-timing-function: ease-out;
-      animation-timing-function: ease-out;
+        <style >
+        input[type=radio] {
+    display:none;
   }
 
-@-webkit-keyframes bounceIn {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0.7)
+
+  .bounce-in{
+        text-align:center;
+        -webkit-animation-name: lop;
+        -moz-animation-name: lop;
+        -o-animation-name: lop;
+        -ms-animation-name: lop;
+        animation-name: lop;
+        -webkit-animation-duration: .8s;
+        -moz-animation-duration: .8s;
+        -o-animation-duration: .8s;
+        -ms-animation-duration: .8s;
+        animation-duration: .8s;
+        -webkit-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease-out;
+        -o-animation-timing-function: ease-out;
+        -ms-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
     }
 
-    50% {
-        opacity: 1;
-        -webkit-transform: scale(1.02)
-    }
+  @-webkit-keyframes lop {
+      0% {
+          opacity: 0;
+          -webkit-transform: scale(0.7)
+      }
 
-    100% {
-        -webkit-transform: scale(1)
-    }
-}
+      50% {
+          opacity: 1;
+          -webkit-transform: scale(1.02)
+      }
+
+      100% {
+          -webkit-transform: scale(1)
+      }
+  }
 
 
 
-.fade-in{
-  animation: fade-in ease 1s;
-  -webkit-animation: fade-in ease 1s;
-  position: relative;
+  .fade-in{
+    animation: fade-in ease 1s;
+    -webkit-animation: fade-in ease 1s;
+    position: relative;
 
-}
+  }
 
-@keyframes fade-in {
-0% {opacity:0;}
-100% {opacity:1;}
-}
+  @keyframes fade-in {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
 
-@-moz-keyframes fade-in {
-0% {opacity:0;}
-100% {opacity:1;}
-}
+  @-moz-keyframes fade-in {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
 
-@-webkit-keyframes fade-in {
-0% {opacity:0;}
-100% {opacity:1;}
-}
+  @-webkit-keyframes fade-in {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
 
-@-o-keyframes fade-in {
-0% {opacity:0;}
-100% {opacity:1;}
-}
+  @-o-keyframes fade-in {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
 
-@-ms-keyframes fade-in {
-0% {opacity:0;}
-100% {opacity:1;}
-}
+  @-ms-keyframes fade-in {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
 
-input[type=radio] + label {
-  display:inline-block;
-width:95%;
-padding:10px;
-border:1px solid #ddd;
-margin-bottom:10px;
-cursor:pointer;
-}
-input[type=radio] + label:hover{ border:1px solid #000000;}
+  input[type=radio] + label {
+    display:inline-block;
+ margin: 0 auto;
+  width:50%;
+  padding:10px;
+  border:1px solid #ddd;
+  margin-bottom:10px;
+  cursor:pointer;
+  }
+  input[type=radio] + label:hover{ border:1px solid #000000;}
 
-.correct-answer{
-  background-color: #009900;
-  color:#fff;
-  border:1px solid yellow !important;
-  -webkit-transition: all 0.2s ease-in-out;
+  .correct-answer{
+    background-color: #009900;
+    color:#fff;
+    border:1px solid yellow !important;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .worngans{ background-color:#F36;color:#fff; border:1px solid #F36 !important;-webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
+  transition: all 0.2s ease-in-out;}
 
-.worngans{ background-color:#F36;color:#fff; border:1px solid #F36 !important;-webkit-transition: all 0.2s ease-in-out;
--moz-transition: all 0.2s ease-in-out;
--o-transition: all 0.2s ease-in-out;
--ms-transition: all 0.2s ease-in-out;
-transition: all 0.2s ease-in-out;}
-      </style>
-  </head>
+  @media (min-width: 768px) {
+      input[type=radio] + label{
+        width:60%;
+      }
+    }
+
+    @media (min-width: 992px) {
+        input[type=radio] + label{
+          width:50%;
+        }
+      }
+
+      @media (max-width: 767.98px) {
+          input[type=radio] + label{
+            width:80%;
+          }
+        }
+
+
+        </style>
+    </head>
   <body>
+    <div class="wrapper">
+    {% include 'quiz/navbar.html' %}
     {% block content%}
 
     {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js" integrity="sha512-+UiyfI4KyV1uypmEqz9cOIJNwye+u+S58/hSwKEAeUMViTTqM9/L4lqu8UxJzhmzGpms8PzFJDzEqXL9niHyjA==" crossorigin="anonymous"></script>
+    <!-- Footer Start -->
+    <div class="footer wow fadeIn" data-wow-delay="0.3s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-lg-3">
+                    <div class="footer-contact">
+                        <h2>Contact</h2>
+                        <p><i class="fa fa-map-marker-alt"></i>Croatia</p>
+                        <p><i class="fa fa-envelope"></i>dragojlo@net.hr</p>
+                        <div class="footer-social">
+                            <a href=""><i class="fab fa-twitter"></i></a>
+                            <a href=""><i class="fab fa-facebook-f"></i></a>
+                            <a href=""><i class="fab fa-youtube"></i></a>
+                            <a href=""><i class="fab fa-instagram"></i></a>
+                            <a href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-3">
+                    <div class="footer-link">
+                        <h2>Useful Pages</h2>
+                        <a href="">About</a>
+                        <a href="">Choose Quiz</a>
+                        <a href="">Our Team</a>
+                        <a href="">Projects</a>
+                        <a href="">Testimonial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-menu">
+            <div class="f-menu">
+                <a href="">Terms of use</a>
+                <a href="">Privacy policy</a>
+                <a href="">Cookies</a>
+                <a href="">Help</a>
+                <a href="">FQAs</a>
+            </div>
+        </div>
+        <div class="container copyright">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; <a href="#">Quisko</a>, All Right Reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/slick/slick.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
     {% block javascript %}{% endblock %}
   </body>
 </html>

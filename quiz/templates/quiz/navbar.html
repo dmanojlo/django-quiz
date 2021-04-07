@@ -1,0 +1,57 @@
+{% load static %}
+
+<!-- Top Bar Start -->
+<div class="top-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-md-12">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Quisko</h1>
+                        <!-- <img src="img/logo.jpg" alt="Logo"> -->
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7 d-none d-lg-block">
+                <div class="row">
+                    <div class="col">
+                        <div class="top-bar-item">
+                            <div class="top-bar-icon">
+                                <img style="width:48px;" src="{% static 'img/brainstorm.png' %}"  alt="Brain">
+                            </div>
+                            <div class="top-bar-text">
+                                <h3>Email</h3>
+                                <p>dragojlo@net.hr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar End -->
+
+<!-- Nav Bar Start -->
+<div class="nav-bar">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <a href="#" class="navbar-brand">MENU</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mr-auto">
+                    <a href="{% url 'quiz:quiz_name' %}" class="nav-item nav-link active">Home</a>
+                    <a href="{% url 'quiz:choose_quiz' %}" class="nav-item nav-link">Choose Quiz</a>
+                    <a href="{% url 'quiz:start_quiz' 1 1 %}" class="nav-item nav-link">Start Quiz</a>
+                    <a href="about.html" class="nav-item nav-link">Create Quiz</a>
+                    <a href="{% url 'quiz:quiz_update' 1 %}" class="nav-item nav-link">Project</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Nav Bar End -->
