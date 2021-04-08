@@ -63,9 +63,14 @@ class QuizStartView(ListView):
     model = QuizName
     template_name = 'quiz/start_quiz.html'
 
-class QuizNameCreateView(CreateView):
+class QuizNameIndexView(CreateView):
     model = QuizName
     template_name = 'quiz/index.html'
+    form_class = QuizNameForm
+
+class QuizNameCreateView(CreateView):
+    model = QuizName
+    template_name = 'quiz/create_quiz.html'
     form_class = QuizNameForm
 
     def form_valid(self, form):
@@ -74,8 +79,6 @@ class QuizNameCreateView(CreateView):
         quiz.save()
         messages.success(self.request, 'Quiz was created with succes! Go make some question.')
         return redirect('quiz:add_question', quiz.pk)
-
-
 
 class QuizUpdateView(UpdateView):
     model = QuizName

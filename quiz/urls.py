@@ -1,7 +1,8 @@
 from django.urls import path, include
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
-from .views import ( QuizNameCreateView,
+from .views import ( QuizNameIndexView,
+                     QuizNameCreateView,
                      QuizUpdateView,
                      QuizListView,
                      add_question,
@@ -21,7 +22,8 @@ app_name = 'quiz' # za url putanju do appa
 urlpatterns = [
      path('list_quizes/', QuizListView.as_view(), name='quiz_list'),
      path('change_quizes/<int:pk>/', QuizUpdateView.as_view(), name='quiz_update'),
-     path('index/', QuizNameCreateView.as_view(), name='quiz_name'),
+     path('index/', QuizNameIndexView.as_view(), name='quiz_name'),
+     path('create_quiz/', QuizNameCreateView.as_view(), name='quiz_create'),
      path('choose_quiz/', QuizChooseView.as_view(), name='choose_quiz'),
      path('questions/<int:pk>/', add_question, name='add_question'),
      path('<int:quiz_pk>/question/<int:question_pk>/', question_answers, name='question_answers'),

@@ -22,12 +22,35 @@ a {
     transition: .3s;
 }
 
+.form-submit{
+  cursor: pointer;
+  padding: 8px 15px;
+  color: #030f27;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: #fdbe33;
+  border: none;
+  transition: .3s;
+}
+
+.form-submit:hover{
+  color: #fdbe33;
+  background: #030f27;
+}
+
 a:hover,
 a:active,
 a:focus {
     color: #fdbe33;
     outline: none;
     text-decoration: none;
+}
+
+hr{
+  border-style:solid;
+  border-color: #fdbe33;
 }
 
 .btn:focus {

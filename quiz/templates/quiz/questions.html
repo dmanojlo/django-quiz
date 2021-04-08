@@ -1,10 +1,13 @@
 {% extends 'quiz/base.html' %}
 
 {% block content %}
+<div id="ques">
+
 <h1>Questions</h1>
 <form action="." method="post">
   {% csrf_token %}
   {{form.as_p}}
   <input type="submit" value="Submit">
 </form>
+</div>
 {% endblock %}
