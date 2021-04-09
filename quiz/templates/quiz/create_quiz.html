@@ -24,7 +24,7 @@
                     <div class="section-header text-center">
                         <h3>Please first enter quiz name</h3>
 
-                      <form action="." method="post">
+                      <form id="question-create" action="." method="post">
                           {% csrf_token %}
                           <div class="form-group">
                               <label for="quiz_name"></label>
@@ -42,19 +42,37 @@
 {% block javascript %}
 <script type="text/javascript">
 $(document).ready(function() {
-$("form").submit(function(e) {
+$("#question-create").submit(function(e) {
   // prevent form submission
   e.preventDefault();
   $.ajax({
     type: "POST",
-    url: "/quiz/questions/22/",
+    dataType: 'json',
     data: $(this).serialize(),
-    success: function() {
-      $('.portfolio').load("/quiz/questions/22/" + ' #ques')
+    success: function(data) {
+      $('.portfolio').load(data.url + ' .container')
      }
   });
 
 });
 });
 </script>
+
+<script type="text/javascript">
+$(document).on('submit', '#question-form',function(e) {
+  var form = $('#question-form');
+  // prevent form submission
+  e.preventDefault();
+  $.ajax({
+    type: "POST",
+    dataType: 'json',
+    url: form.attr('action'),
+    data: $(this).serialize(),
+    success: function(data) {
+      $('.portfolio').load(data.urlans + ' #answ')
+     }
+  });
+});
+</script>
+
 {% endblock %}

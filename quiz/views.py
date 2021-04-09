@@ -74,11 +74,14 @@ class QuizNameCreateView(CreateView):
     form_class = QuizNameForm
 
     def form_valid(self, form):
+        data = dict()
         quiz = form.save(commit=False)
         quiz.user = self.request.user #connecting table with the user
         quiz.save()
         messages.success(self.request, 'Quiz was created with succes! Go make some question.')
-        return redirect('quiz:add_question', quiz.pk)
+        #return redirect('quiz:add_question', quiz.pk)
+        data['url'] = reverse('quiz:add_question', args=[quiz.pk]) #redirect to next question
+        return JsonResponse(data)
 
 class QuizUpdateView(UpdateView):
     model = QuizName
@@ -111,6 +114,7 @@ class QuizUpdateView(UpdateView):
 #         return super().form_valid(form)
 
 def add_question(request, pk):
+    data = dict()
     quiz = get_object_or_404(QuizName, pk=pk, user = request.user)
     if request.method == 'POST':
         form = QuestionForm(request.POST)
@@ -119,7 +123,10 @@ def add_question(request, pk):
             question.quiz = quiz
             question.save()
             messages.success(request, 'You may add answers!')
-            return redirect('quiz:question_answers', quiz.pk, question.pk)
+            data['urlans'] = reverse('quiz:question_answers', args=[quiz.pk, question.pk]) #redirect to next question
+            print(data)
+            return JsonResponse(data)
+            #return redirect('quiz:question_answers', quiz.pk, question.pk)
     else:
         form = QuestionForm()
     return render(request, 'quiz/questions.html',  {'quiz': quiz, 'form': form})

@@ -1,6 +1,7 @@
-{% extends 'quiz/base.html'%}
 
 {% block content %}
+<div id="answ">
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a >My Quizzes</a></li>
@@ -9,12 +10,11 @@
     </ol>
   </nav>
   <h2 class="mb-3">{{ question.text }}</h2>
-  <form method="post" novalidate>
+  <form method="post" style="" novalidate>
     {% csrf_token %}
     {{ formset.management_form }}
     {{ form }}
     <div class="card mb-3{% if formset.errors %} border-danger{% endif %}">
-      <div class="card-header">
         <div class="row">
           <div class="col-8">
             <strong>Answers</strong>
@@ -26,7 +26,6 @@
             <strong>Delete?</strong>
           </div>
         </div>
-      </div>
       {% for error in formset.non_form_errors %}
         <div class="card-body bg-danger border-danger text-white py-2">{{ error }}</div>
       {% endfor %}
@@ -59,4 +58,5 @@
     <a  class="btn btn-outline-secondary" role="button">Nevermind</a>
     <a  class="btn btn-danger float-right">Delete</a>
   </form>
+  </div>
 {% endblock %}
