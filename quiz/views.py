@@ -158,7 +158,10 @@ def question_answers(request, quiz_pk, question_pk):
             # answer.question = question #for connecting tables with foreign key
             # answer.save()
             messages.success(request, 'Answers saved with success!')
-            return redirect('quiz:quiz_name')
+            data['urli'] = reverse('quiz:question_answers', args=[quiz.pk, question.pk]) #redirect to next question
+            print(data)
+            return JsonResponse(data)
+            #return redirect('quiz:quiz_name')
     else:
         form = QuestionForm(instance=question)
         formset = AnswerFormSet(instance=question)

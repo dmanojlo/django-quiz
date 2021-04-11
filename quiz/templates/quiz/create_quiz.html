@@ -69,7 +69,24 @@ $(document).on('submit', '#question-form',function(e) {
     url: form.attr('action'),
     data: $(this).serialize(),
     success: function(data) {
-      $('.portfolio').load(data.urlans + ' #answ')
+      $('.portfolio').load(data.urlans + ' .container')
+     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).on('submit', '#answer-form',function(e) {
+  var form = $('#answer-form');
+  // prevent form submission
+  e.preventDefault();
+  $.ajax({
+    type: "POST",
+    dataType: 'json',
+    url: form.attr('action'),
+    data: $(this).serialize(),
+    success: function(data) {
+      $('.portfolio').load(data.urli + ' .container')
      }
   });
 });
