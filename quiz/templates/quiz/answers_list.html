@@ -4,10 +4,10 @@
     <div class="section-header">
       <h3 style="text-align:center;">Type in answers</h3>
   <h5 style="margin-top:15px;">Question*</h5>
-  <form style="text-align:center;" method="post" id="answer-form" novalidate>
+  <form style="text-align:center;" method="post" id="answer-form" action="{% url 'quiz:question_answers' quiz.pk question.pk %}">
     {% csrf_token %}
     {{ formset.management_form }}
-    <input class="form-control" type="text" name="text" value="{{form.text.value}}" maxlength="255" required="" id="id_text">
+    <input class="form-control" type="text" name="text" value="{{form.text.value}}" maxlength="255" required id="id_text">
     <div class="{% if formset.errors %} border-danger{% endif %}">
         <div class="row" style="margin-top:15px;">
           <div class="col-8">
@@ -40,7 +40,7 @@
     <p>
       <small style="margin-top:15px;" class="form-text text-muted">Your question may have at least <strong>2</strong> answers and maximum <strong>4</strong> answers. Select at least one correct answer.</small>
     </p>
-    <button type="submit" class="btn btn-success">Save changes</button>
+    <input type="submit" class="btn btn-success" value="Save changes">
     <a  class="btn btn-outline-secondary" role="button">Nevermind</a>
   </form>
   </div>

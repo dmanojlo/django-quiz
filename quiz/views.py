@@ -104,6 +104,10 @@ class QuizUpdateView(UpdateView):
         '''
         return self.request.user.quiz.all()
 
+    def get_success_url(self):
+        messages.success(self.request, 'Quiz name was changed with succes! Go make some question.')
+        return self.request.path
+
 
 # class QuestionsCreateView(CreateView):
 #     model = Question
@@ -158,10 +162,10 @@ def question_answers(request, quiz_pk, question_pk):
             # answer.question = question #for connecting tables with foreign key
             # answer.save()
             messages.success(request, 'Answers saved with success!')
-            data['urli'] = reverse('quiz:question_answers', args=[quiz.pk, question.pk]) #redirect to next question
-            print(data)
-            return JsonResponse(data)
-            #return redirect('quiz:quiz_name')
+            # data['urli'] = reverse('quiz:question_answers', args=[quiz.pk, question.pk]) #redirect to next question
+            # print(data)
+            # return JsonResponse(data)
+            return redirect('quiz:quiz_list')
     else:
         form = QuestionForm(instance=question)
         formset = AnswerFormSet(instance=question)

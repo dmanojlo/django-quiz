@@ -1,43 +1,23 @@
 {% extends 'quiz/base.html' %}
 
 {% block content %}
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a>My Quizzes</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{ quiz.name }}</li>
-    </ol>
-  </nav>
-  <h2 class="mb-3">
-    {{ quiz.name }}
-  </h2>
-  <div class="row mb-3">
-    <div class="col-md-6 col-sm-8 col-12">
-      <form method="post" novalidate>
+<div id="change-quiz" style="margin-top:15px;">
+  <div class="container">
+    {% for message in messages%}
+      <p>{{message}}</p>
+    {% endfor %}
+  <h2 style="text-align:left;">Quiz Name*</h2>
+      <form style="text-align: center;" method="post" action="." novalidate>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Save changes</button>
+        <input class="form-control" type="text" name="name" value="{{form.name.value}}" maxlength="255" required id="id_name">
+        <button style="margin-top:15px;" type="submit" class="btn btn-success">Save changes</button>
       </form>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <div class="row">
-        <div class="col-10">
-          <strong>Questions</strong>
-        </div>
-        <div class="col-2">
-          <strong>Answers</strong>
-        </div>
-      </div>
-    </div>
+    <div style="text-align: center;" class="mid">
+          <p style="margin-top:20px;font-weight:bold">Questions</p>
     <div class="list-group list-group-flush list-group-formset">
       {% for question in questions %}
         <div class="list-group-item">
-          <div class="row">
-            <div class="col-10">
               <a href="{% url 'quiz:question_answers' quiz.pk question.pk %}">{{ question.text }}</a>
-            </div>
-          </div>
         </div>
       {% empty %}
         <div class="list-group-item text-center">
@@ -48,5 +28,7 @@
     <div class="card-footer">
       <a href="{% url 'quiz:add_question' quiz.pk %}" class="btn btn-primary btn-sm">Add question</a>
     </div>
+    </div>
   </div>
+</div>
 {% endblock %}
