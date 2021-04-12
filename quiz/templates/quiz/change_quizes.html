@@ -1,6 +1,23 @@
 {% extends 'quiz/base.html' %}
+{% load static %}
 
 {% block content %}
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>My Quiz</h2>
+            </div>
+            <div class="col-12">
+                <h3>Edit and add more questions</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
 <div id="change-quiz" style="margin-top:15px;">
   <div class="container">
     {% for message in messages%}
@@ -10,14 +27,14 @@
       <form style="text-align: center;" method="post" action="." novalidate>
         {% csrf_token %}
         <input class="form-control" type="text" name="name" value="{{form.name.value}}" maxlength="255" required id="id_name">
-        <button style="margin-top:15px;" type="submit" class="btn btn-success">Save changes</button>
+        <button style="margin-top:15px;" type="submit" class="form-submit-change">Save changes</button>
       </form>
     <div style="text-align: center;" class="mid">
-          <p style="margin-top:20px;font-weight:bold">Questions</p>
+          <p style="margin-top:20px;font-weight:bold;font-size:20px;color:#000;">Questions</p>
     <div class="list-group list-group-flush list-group-formset">
       {% for question in questions %}
         <div class="list-group-item">
-              <a href="{% url 'quiz:question_answers' quiz.pk question.pk %}">{{ question.text }}</a>
+              <a style="font-weight:500;"href="{% url 'quiz:question_answers' quiz.pk question.pk %}">{{ question.text }}</a>
         </div>
       {% empty %}
         <div class="list-group-item text-center">
@@ -26,7 +43,7 @@
       {% endfor %}
     </div>
     <div class="card-footer">
-      <a href="{% url 'quiz:add_question' quiz.pk %}" class="btn btn-primary btn-sm">Add question</a>
+      <a href="{% url 'quiz:add_question' quiz.pk %}" class="form-submit">Add question</a>
     </div>
     </div>
   </div>

@@ -26,11 +26,11 @@
             <div class="row" style="margin-top:10px;">
               <div class="col-8">
                 {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
-                <input autocomplete="off" type="text"  class="form-control" name="{{form.text.html_name}}" maxlength="255" id="{{form.text.auto_id}}">
+                <input autocomplete="off" type="text"  class="form-control" name="{{form.text.html_name}}" {% if form.text.value != None %} value="{{form.text.value}}" {% endif %}  maxlength="255" id="{{form.text.auto_id}}">
                 {% if form.instance.pk and form.text.value != form.instance.text %}<p class="mb-0 mt-1"><small class="text-muted font-italic"><strong>Old answer:</strong> {{ form.instance.text }}</small></p>{% endif %}
               </div>
               <div class="col-2">
-                <input type="checkbox"  style="width:25px;height:25px;margin-top:5px;"  name="{{form.is_correct.html_name}}"  id="{{form.is_correct.auto_id}}">
+                <input type="checkbox"  style="width:25px;height:25px;margin-top:5px;" {% if form.is_correct.value %} checked {% endif %} name="{{form.is_correct.html_name}}"  id="{{form.is_correct.auto_id}}">
               </div>
             </div>
           </div>

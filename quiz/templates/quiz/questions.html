@@ -1,6 +1,24 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
 
 {% block content %}
 
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>My Quiz</h2>
+            </div>
+            <div class="col-12">
+                <h3>Add questions</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div id="question">
 <div class="container">
     <div class="section-header text-center">
         <h3>Type in the question</h3>
@@ -14,6 +32,7 @@
           <input class="form-submit" type="submit" value="Submit">
         </form>
     </div>
+</div>
 </div>
 
 {% endblock %}

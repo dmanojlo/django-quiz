@@ -105,7 +105,7 @@ class QuizUpdateView(UpdateView):
         return self.request.user.quiz.all()
 
     def get_success_url(self):
-        messages.success(self.request, 'Quiz name was changed with succes! Go make some question.')
+        messages.success(self.request, 'Quiz name was changed with succes! Go make some questions.')
         return self.request.path
 
 
@@ -117,6 +117,8 @@ class QuizUpdateView(UpdateView):
 #     def form_valid(self, form):
 #         return super().form_valid(form)
 
+
+
 def add_question(request, pk):
     data = dict()
     quiz = get_object_or_404(QuizName, pk=pk, user = request.user)
@@ -126,14 +128,15 @@ def add_question(request, pk):
             question = form.save(commit=False)
             question.quiz = quiz
             question.save()
-            messages.success(request, 'You may add answers!')
             data['urlans'] = reverse('quiz:question_answers', args=[quiz.pk, question.pk]) #redirect to next question
+            print(request.path)
             print(data)
             return JsonResponse(data)
             #return redirect('quiz:question_answers', quiz.pk, question.pk)
     else:
         form = QuestionForm()
     return render(request, 'quiz/questions.html',  {'quiz': quiz, 'form': form})
+
 
 
 def question_answers(request, quiz_pk, question_pk):
@@ -147,7 +150,7 @@ def question_answers(request, quiz_pk, question_pk):
         min_num=2,
         extra = 2,
         validate_min=True,
-        max_num=10,
+        max_num=4,
         validate_max=True
     )
 
@@ -161,7 +164,6 @@ def question_answers(request, quiz_pk, question_pk):
             # answer = form.save(commit=False)
             # answer.question = question #for connecting tables with foreign key
             # answer.save()
-            messages.success(request, 'Answers saved with success!')
             # data['urli'] = reverse('quiz:question_answers', args=[quiz.pk, question.pk]) #redirect to next question
             # print(data)
             # return JsonResponse(data)

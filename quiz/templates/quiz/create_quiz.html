@@ -50,7 +50,7 @@ $("#question-create").submit(function(e) {
     dataType: 'json',
     data: $(this).serialize(),
     success: function(data) {
-      $('.portfolio').load(data.url + ' .container')
+      $('.portfolio').load(data.url + ' #question')
      }
   });
 
