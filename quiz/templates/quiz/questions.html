@@ -36,3 +36,22 @@
 </div>
 
 {% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+$("#question-form").submit(function(e) {
+  // prevent form submission
+  e.preventDefault();
+  $.ajax({
+    type: "POST",
+    dataType: 'json',
+    data: $(this).serialize(),
+    success: function(data) {
+      window.location = data.urlans
+     }
+  });
+
+});
+});
+</script>
+{% endblock %}

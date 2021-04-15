@@ -1,6 +1,26 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="container">
+
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>My Quiz</h2>
+            </div>
+            <div class="col-12">
+                <h3>Add answers</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<div id="answers">
+  <div class="container">
     <div class="section-header">
       <h3 style="text-align:center;">Type in answers</h3>
   <h5 style="margin-top:15px;">Question*</h5>
@@ -43,6 +63,7 @@
     <input type="submit" class="btn btn-success" value="Save changes">
     <a  class="btn btn-outline-secondary" role="button">Nevermind</a>
   </form>
+  </div>
   </div>
 </div>
 {% endblock %}

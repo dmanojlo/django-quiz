@@ -122,6 +122,7 @@ class QuizUpdateView(UpdateView):
 def add_question(request, pk):
     data = dict()
     quiz = get_object_or_404(QuizName, pk=pk, user = request.user)
+    #previous_url = request.META.get('HTTP_REFERER')
     if request.method == 'POST':
         form = QuestionForm(request.POST)
         if form.is_valid():
@@ -129,8 +130,6 @@ def add_question(request, pk):
             question.quiz = quiz
             question.save()
             data['urlans'] = reverse('quiz:question_answers', args=[quiz.pk, question.pk]) #redirect to next question
-            print(request.path)
-            print(data)
             return JsonResponse(data)
             #return redirect('quiz:question_answers', quiz.pk, question.pk)
     else:
@@ -167,7 +166,7 @@ def question_answers(request, quiz_pk, question_pk):
             # data['urli'] = reverse('quiz:question_answers', args=[quiz.pk, question.pk]) #redirect to next question
             # print(data)
             # return JsonResponse(data)
-            return redirect('quiz:quiz_list')
+            return redirect('quiz:quiz_update', quiz.pk)
     else:
         form = QuestionForm(instance=question)
         formset = AnswerFormSet(instance=question)
