@@ -11,9 +11,9 @@ from django.forms import inlineformset_factory
 from django.db import transaction
 
 # Create your views here.
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import QuizName, Question, Answer
-from .forms import QuizNameForm, QuestionForm, AnswerForm, TakeQuizForm
+from .forms import QuizNameForm, QuestionForm, AnswerForm, TakeQuizForm, BaseAnswerInlineFormset
 # Create your views here.
 
 import json
@@ -108,6 +108,28 @@ class QuizUpdateView(UpdateView):
         messages.success(self.request, 'Quiz name was changed with succes! Go make some questions.')
         return self.request.path
 
+class QuizDeleteView(DeleteView):
+    model = QuizName
+    context_object_name = 'quiz'
+    template_name = 'quiz/quiz_delete.html'
+
+
+    def get_success_url(self):
+        #to get data from Question model you have to use self.get_object()
+        quiz = self.get_object()
+        return reverse('quiz:quiz_list')
+
+
+class QuestionDeleteView(DeleteView):
+    model = Question
+    context_object_name = 'question'
+    template_name = 'quiz/question_delete.html'
+
+
+    def get_success_url(self):
+        #to get data from Question model you have to use self.get_object()
+        question = self.get_object()
+        return reverse('quiz:quiz_update', kwargs={'pk': question.quiz.pk})
 
 # class QuestionsCreateView(CreateView):
 #     model = Question
@@ -145,6 +167,7 @@ def question_answers(request, quiz_pk, question_pk):
     AnswerFormSet = inlineformset_factory(
         Question,  # parent model
         Answer,  # base model
+        formset = BaseAnswerInlineFormset,
         fields=('text', 'is_correct'),
         min_num=2,
         extra = 2,

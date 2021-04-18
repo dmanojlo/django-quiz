@@ -13,6 +13,8 @@ from .views import ( QuizNameIndexView,
                      start_quiz,
                      QuizStartView,
                      QuizChooseView,
+                     QuestionDeleteView,
+                     QuizDeleteView,
                      #edit_add_question
 
                     )
@@ -26,6 +28,8 @@ urlpatterns = [
      path('index/', QuizNameIndexView.as_view(), name='quiz_name'),
      path('create_quiz/', QuizNameCreateView.as_view(), name='quiz_create'),
      path('choose_quiz/', QuizChooseView.as_view(), name='choose_quiz'),
+     path('question_delete/<int:pk>/', QuestionDeleteView.as_view(), name='question_delete'),
+     path('quiz_delete/<int:pk>/', QuizDeleteView.as_view(), name='quiz_delete'),
      path('questions/<int:pk>/', add_question, name='add_question'),
      #path('edit_add_questions/<int:pk>/', edit_add_question, name='edit_add_question'),
      path('<int:quiz_pk>/question/<int:question_pk>/', question_answers, name='question_answers'),

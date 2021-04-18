@@ -28,6 +28,7 @@
     {% csrf_token %}
     {{ formset.management_form }}
     <input class="form-control" type="text" name="text" value="{{form.text.value}}" maxlength="255" required id="id_text">
+    <a style="margin-top:10px;" class="btn btn-danger" href="{% url 'quiz:question_delete' question.pk %}">Delete question</a>
     <div class="{% if formset.errors %} border-danger{% endif %}">
         <div class="row" style="margin-top:15px;">
           <div class="col-8">
@@ -61,7 +62,7 @@
       <small style="margin-top:15px;" class="form-text text-muted">Your question may have at least <strong>2</strong> answers and maximum <strong>4</strong> answers. Select at least one correct answer.</small>
     </p>
     <input type="submit" class="btn btn-success" value="Save changes">
-    <a  class="btn btn-outline-secondary" role="button">Nevermind</a>
+    <a href="{% url 'quiz:quiz_update' quiz.pk %}" class="btn btn-outline-secondary" role="button">Nevermind</a>
   </form>
   </div>
   </div>

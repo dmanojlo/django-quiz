@@ -45,9 +45,9 @@
                 <div class="navbar-nav mr-auto">
                     <a href="{% url 'quiz:quiz_name' %}" class="nav-item nav-link active">Home</a>
                     <a href="{% url 'quiz:choose_quiz' %}" class="nav-item nav-link">Choose Quiz</a>
-                    <a href="{% url 'quiz:start_quiz' 1 1 %}" class="nav-item nav-link">My Quizzes</a>
+                    <a href="{% url 'quiz:quiz_list' %}" class="nav-item nav-link">My Quizzes</a>
                     <a href="{% url 'quiz:quiz_create' %}" class="nav-item nav-link">Create Quiz</a>
-                    <a href="{% url 'quiz:quiz_update' 1 %}" class="nav-item nav-link">Project</a>
+                    <a href="{% url 'quiz:quiz_list'%}" class="nav-item nav-link">Project</a>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
             </div>

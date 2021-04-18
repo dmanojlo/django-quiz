@@ -1,21 +1,31 @@
 {% extends 'quiz/base.html' %}
+{% load static %}
 
 {% block content %}
 
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>List of my quizzes</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+  <div class="container">
 
-  <h2 class="mb-3">My Quizzes</h2>
-  <div class="card">
-    <table class="table mb-0">
+    <table class="table">
       <thead>
         <tr>
-          <th>Quiz</th>
-          <th></th>
+          <th>Quiz Name</th>
         </tr>
       </thead>
       <tbody>
         {% for quiz in quiz_list %}
           <tr>
-            <td class="align-middle"><a href="{% url 'quiz:quiz_update' quiz.pk %}">{{ quiz.name }}</a></td>
+            <td><a style="font-weight:500;" href="{% url 'quiz:quiz_update' quiz.pk %}">{{ quiz.name }}</a><a style="float:right;" class="btn btn-danger" href="{% url 'quiz:quiz_delete' quiz.pk %}">Delete Quiz</a></td>
           </tr>
         {% empty %}
           <tr>
