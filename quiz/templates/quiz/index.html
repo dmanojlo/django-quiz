@@ -13,7 +13,7 @@
                         <div class="carousel-caption">
                             <p class="animated fadeInRight">How smart are you?</p>
                             <h1 class="animated fadeInLeft">Test your knowledge</h1>
-                            <a class="btn animated fadeInUp" href="https://htmlcodex.com/construction-company-website-template">Choose quiz</a>
+                            <a class="btn animated fadeInUp" href="{% url 'quiz:choose_quiz' %}">Choose quiz</a>
                         </div>
                     </div>
 
@@ -22,7 +22,7 @@
                         <div class="carousel-caption">
                             <p class="animated fadeInRight">Like writing questions?</p>
                             <h1 class="animated fadeInLeft">Create your own quiz</h1>
-                            <a class="btn animated fadeInUp" href="https://htmlcodex.com/construction-company-website-template">Create quiz</a>
+                            <a class="btn animated fadeInUp" href="{% url 'quiz:quiz_create' %}">Create quiz</a>
                         </div>
                     </div>
                 </div>
@@ -656,5 +656,5 @@
                 </div>
             </div>
             <!-- Blog End -->
-      
+
         {% endblock %}
