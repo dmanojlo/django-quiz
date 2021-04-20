@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% load account socialaccount %}
-
+{% load widget_tweaks %}
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@
     </div>
 </div>
 <!-- Page Header End -->
-<h1>{% trans "Sign In" %}</h1>
+<div class="container">
 
 {% get_providers as socialaccount_providers %}
 
@@ -41,10 +41,10 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 {% else %}
 <p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">Please register master</a> first.{% endblocktrans %}</p>
+<a href="{{ signup_url }}">Please register</a> first.{% endblocktrans %}</p>
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
+<!-- <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {{ form.as_p }}
   {% if redirect_field_value %}
@@ -52,6 +52,78 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% endif %}
   <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-</form>
+</form> -->
+<!--
+<form method="post">
+    {% csrf_token %}
 
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+        {{ field|add_class:'form-control' }}
+        {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">
+        <span class="glyphicon glyphicon-ok"></span> Save
+      </button>
+      <a class="btn btn-default">Cancel</a>
+    </div>
+  </form> -->
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% for hidden_field in form.hidden_fields %}
+  {{ hidden_field }}
+{% endfor %}
+{% if form.non_field_errors %}
+  <div class="alert alert-danger" role="alert">
+    {% for error in form.non_field_errors %}
+      {{ error }}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% for field in form.visible_fields %}
+  <div class="form-group">
+
+    {{ field.label_tag }}
+
+    {% if form.is_bound %}
+      {% if field.errors %}
+        {% render_field field class="form-control is-invalid" %}
+        {% for error in field.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field field class="form-control is-valid" %}
+      {% endif %}
+    {% else %}
+      {% render_field field class="form-control" %}
+    {% endif %}
+
+    {% if field.help_text %}
+      <small class="form-text text-muted">{{ field.help_text }}</small>
+    {% endif %}
+
+  </div>
+{% endfor %}
+<div class="form-group">
+  <button type="submit" class="btn btn-success">
+    <span class="glyphicon glyphicon-ok"></span> Save
+  </button>
+  <a class="btn btn-default">Cancel</a>
+</div>
+  </form>
+</div>
 {% endblock %}

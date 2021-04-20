@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'widget_tweaks',
 ]
 
 SITE_ID = 1
@@ -142,6 +143,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+#allauth redirect
+LOGIN_REDIRECT_URL='quiz:quiz_name'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
