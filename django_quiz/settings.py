@@ -146,6 +146,7 @@ USE_TZ = True
 
 #allauth redirect
 LOGIN_REDIRECT_URL='quiz:quiz_name'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'

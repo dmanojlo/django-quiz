@@ -48,6 +48,15 @@
                     <a href="{% url 'quiz:quiz_list' %}" class="nav-item nav-link">My Quizzes</a>
                     <a href="{% url 'quiz:quiz_create' %}" class="nav-item nav-link">Create Quiz</a>
                     <a href="{% url 'quiz:quiz_list'%}" class="nav-item nav-link">Project</a>
+                    <a href="{% url 'account_login' %}" class="nav-item nav-link">Login</a>
+                    <a href="{% url 'account_signup' %}" class="nav-item nav-link">Register</a>
+                    <form id="logout" method="post" action="{% url 'account_logout' %}">
+                      {% csrf_token %}
+                      {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                      {% endif %}
+                      <button style="background: none;border: none;padding: 0;outline: none;" type="submit"><a class="nav-item nav-link">Logout</a></button>
+                    </form>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
             </div>

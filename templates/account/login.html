@@ -18,6 +18,8 @@
     </div>
 </div>
 <!-- Page Header End -->
+
+
 <div class="container">
 
 {% get_providers as socialaccount_providers %}
@@ -94,33 +96,34 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 {% for field in form.visible_fields %}
   <div class="form-group">
-
+    <!-- exclude remember me field with if conditional -->
+    {% if field != form.remember %}
     {{ field.label_tag }}
 
     {% if form.is_bound %}
       {% if field.errors %}
-        {% render_field field class="form-control is-invalid" %}
+        {% render_field field class="form-control is-invalid" placeholder='' %}
         {% for error in field.errors %}
           <div class="invalid-feedback">
             {{ error }}
           </div>
         {% endfor %}
       {% else %}
-        {% render_field field class="form-control is-valid" %}
+        {% render_field field class="form-control" placeholder='' %}
       {% endif %}
     {% else %}
-      {% render_field field class="form-control" %}
+      {% render_field field class="form-control" placeholder='' %}
     {% endif %}
 
     {% if field.help_text %}
       <small class="form-text text-muted">{{ field.help_text }}</small>
     {% endif %}
-
+    {% endif %}
   </div>
 {% endfor %}
 <div class="form-group">
   <button type="submit" class="btn btn-success">
-    <span class="glyphicon glyphicon-ok"></span> Save
+    <span class="glyphicon glyphicon-ok"></span> Login
   </button>
   <a class="btn btn-default">Cancel</a>
 </div>
