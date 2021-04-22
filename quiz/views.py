@@ -4,7 +4,8 @@ from django.template.loader import render_to_string
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required #for function based views
+from django.contrib.auth.mixins import LoginRequiredMixin #for classed based views
 from django.db.models import F #F() expressions are good for memory
 from django.core.mail import send_mail
 from django.forms import inlineformset_factory
@@ -35,7 +36,8 @@ class QuizChooseView(ListView):
         context['questions'] = myziped
         return context
 
-class QuizListView(ListView):
+
+class QuizListView(LoginRequiredMixin,ListView):
     model = QuizName
     context_object_name = 'quiz_list'
     template_name = 'quiz/list_quizes.html'
@@ -68,7 +70,7 @@ class QuizNameIndexView(CreateView):
     template_name = 'quiz/index.html'
     form_class = QuizNameForm
 
-class QuizNameCreateView(CreateView):
+class QuizNameCreateView(LoginRequiredMixin,CreateView):
     model = QuizName
     template_name = 'quiz/create_quiz.html'
     form_class = QuizNameForm
