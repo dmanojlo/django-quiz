@@ -206,6 +206,8 @@ def start_quiz(request, quiz_pk, question_pk):
     question = get_object_or_404(Question, pk=question_pk, quiz = quiz)
     next_question = Question.objects.filter(quiz=quiz, id__gt=question_pk).order_by('id').first()
     correct_answer = Answer.objects.get(question=question, is_correct=True)
+    number_of_questions = Question.objects.filter(quiz=quiz_pk).count()
+    print(number_of_questions)
     global score
     if request.method == 'POST':
         form = TakeQuizForm(request.POST, question=question)
@@ -219,7 +221,7 @@ def start_quiz(request, quiz_pk, question_pk):
                 return JsonResponse(data)
             else:
                 data['form_is_valid'] = False
-                data['message'] = 'Your miserable score is ' + str(score)
+                data['message'] = 'Your miserable score is ' + str(score) + '/' + str(number_of_questions)
                 print(score)
                 score = 0
                 return JsonResponse(data)
