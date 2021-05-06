@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'uo7&vvmirxa5zlv)1ui!4eok*-+*ogu@46fm!&onv3wl6m-+cg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['quisko.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -53,6 +53,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,6 +149,7 @@ USE_TZ = True
 LOGIN_REDIRECT_URL='quiz:quiz_name'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
