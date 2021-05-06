@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
 
+  var count = 1;
    $('#container').on('click', '.ans', function() {
      var myVar = document.getElementById("myVar").value;
      $('.bounce-in').delay(200).fadeTo(500, 0);
@@ -25,7 +26,6 @@ $(document).ready(function() {
        form.submit(function(e) {
            // prevent form submission
            e.preventDefault();
-
            // submit the form via Ajax
            $.ajax({
                url: form.attr('action'),
@@ -36,7 +36,11 @@ $(document).ready(function() {
                    // Inject the result in the HTML
                    //window.location = data.url  django url redirect in ajax success
                    if (data.form_is_valid) {
-                       $('#container').load(data.url + ' #container')
+                       count++;
+                       console.log(count);
+                       $('#container').load(data.url + ' #container', function(){ $('.num').html(count.toString()); });
+
+
                    }
                    else {
                      $('.card-header').empty();

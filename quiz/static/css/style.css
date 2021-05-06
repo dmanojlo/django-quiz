@@ -25,6 +25,7 @@ a {
 }
 
 
+
 .form-submit-change{
   cursor: pointer;
   padding: 8px 15px;
@@ -128,6 +129,7 @@ margin:0 auto;
 
 
 .card-header{
+  position: relative;
   height:300px;
   display: flex;
   justify-content: center;
@@ -135,6 +137,12 @@ margin:0 auto;
   background-color: #fdbe33;
 }
 
+.num-questions{
+  position: absolute;
+  top:-20px;
+  right:0;
+
+}
 
 /**********************************/
 /********** Top Bar CSS ***********/
@@ -274,19 +282,35 @@ margin:0 auto;
     border-color: #fdbe33;
 }
 
+/* @media (min-width: 1200px) {
+  .num-questions{
+    padding-right: calc(100% - 1em);
+  }
+} */
+
 @media (min-width: 768px) {
     .card{
       width:60%;
+
     }
+
+    /* .num-questions{
+      padding-left: calc(100% - 303px);
+    } */
     .btn-start{
       width:60%;
     }
   }
 
+
+
 @media (min-width: 992px) {
     .card{
       width:50%;
     }
+    /* .num-questions{
+      padding-left: calc(100% - 483px);
+    } */
     .btn-start{
       width:50%;
     }
@@ -318,6 +342,9 @@ margin:0 auto;
         padding: 15px;
     }
 
+    /* .num-questions{
+      padding-left: calc(100% - 305px);
+    } */
     .nav-bar a.nav-link {
         padding: 5px;
     }
@@ -420,7 +447,9 @@ margin:0 auto;
     .card{
       width:80%;
     }
-
+    /* .num-questions{
+      padding-left: calc(100% - 127px);
+    } */
     .btn-start{
       width:80%;
     }

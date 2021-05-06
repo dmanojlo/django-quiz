@@ -1,10 +1,13 @@
 
 <div class="container">
   <input type="hidden" id="myVar" name="variable" value="{{ correct_answer }}">
-  <div class="bounce-in">
+  <div id="conn" class="bounce-in">
     <div class="card" style="margin: 0 auto;">
       <div class="card-header">
-        <h2>{{ question.text }} {{qui}}</h2>
+        <div class="num-questions">
+          <span class="num">1</span><span>/{{num_of_q}}</span>
+        </div>
+        <h2>{{ question.text }}</h2>
       </div>
       </div>
     </div>

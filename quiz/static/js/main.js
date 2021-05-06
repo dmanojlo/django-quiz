@@ -1,10 +1,10 @@
 (function ($) {
     "use strict";
-    
+
     // Initiate the wowjs
     new WOW().init();
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 200) {
@@ -17,8 +17,8 @@
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
-    
-    
+
+
     // Sticky Navbar
     $(window).scroll(function () {
         if ($(this).scrollTop() > 90) {
@@ -29,8 +29,8 @@
             $('.carousel, .page-header').css("margin-top", "0");
         }
     });
-    
-    
+
+
     // Dropdown on mouse hover
     $(document).ready(function () {
         function toggleNavbarMethod() {
@@ -47,22 +47,21 @@
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
     });
-    
-    
+
+
     // jQuery counterUp
     $('[data-toggle="counter-up"]').counterUp({
         delay: 10,
         time: 2000
     });
-    
-    
+
+
     // Modal Video
     $(document).ready(function () {
         var $videoSrc;
         $('.btn-play').click(function () {
             $videoSrc = $(this).data("src");
         });
-        console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
@@ -94,8 +93,8 @@
         asNavFor: '.testimonial-slider'
     });
     $('.testimonial .slider-nav').css({"position": "relative", "height": "160px"});
-    
-    
+
+
     // Blogs carousel
     $(".related-slider").owlCarousel({
         autoplay: true,
@@ -118,8 +117,8 @@
             }
         }
     });
-    
-    
+
+
     // Portfolio isotope and filter
     var portfolioIsotope = $('.portfolio-container').isotope({
         itemSelector: '.portfolio-item',
@@ -132,6 +131,5 @@
 
         portfolioIsotope.isotope({filter: $(this).data('filter')});
     });
-    
-})(jQuery);
 
+})(jQuery);
