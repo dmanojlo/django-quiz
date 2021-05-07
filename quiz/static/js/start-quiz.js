@@ -46,7 +46,7 @@ $(document).ready(function() {
                      $('.card-header').empty();
                      $('.card-header').html("<h3>" + data.message + "</h3>").fadeIn("slow");
                      $('.fade-in').empty();
-                     $('.fade-in').html('<div class="about"><div class="about-text"><a class="btn btn-start" href="">Play Again</a><a class="btn btn-start"  href="/quiz/choose_quiz/">Choose Quiz</a></div></div>').css({"opacity":"1", "text-align": "center", "right":""}).fadeIn("slow");
+                     $('.fade-in').html('<div class="about"><div class="about-text"><a class="btn btn-start" href="">Play Again</a><a class="btn btn-start"  href="/choose_quiz/">Choose Quiz</a></div></div>').css({"opacity":"1", "text-align": "center", "right":""}).fadeIn("slow");
                      $(".bounce-in").animate({
                    opacity: "1",
                  }, 1000, function() {
