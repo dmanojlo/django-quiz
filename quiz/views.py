@@ -220,7 +220,10 @@ def start_quiz(request, quiz_pk, question_pk):
                 return JsonResponse(data)
             else:
                 data['form_is_valid'] = False
-                data['message'] = 'Your miserable score is ' + str(score) + '/' + str(number_of_questions)
+                if score < (number_of_questions//2):
+                    data['message'] = 'As expected. You are an idiot. Your miserable score is ' + str(score) + '/' + str(number_of_questions)
+                else:
+                    data['message'] = 'Unbelivable. Your little brain got ' + str(score) + '/' + str(number_of_questions)
                 score = 0
                 return JsonResponse(data)
 
