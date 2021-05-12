@@ -15,7 +15,7 @@
             </div>
             <!-- Page Header End -->
 
-          
+
 
             <!-- About Start -->
             <div id="container">
@@ -27,7 +27,9 @@
 {% endblock %}
 
   {% block javascript %}
-
+  <script type="text/javascript">
+    var num_of_q = {{num_of_q}};
+  </script>
   <script src="{% static 'js/start-quiz.js' %}"></script>
 
   {% endblock %}

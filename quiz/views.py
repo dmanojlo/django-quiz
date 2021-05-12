@@ -10,6 +10,7 @@ from django.db.models import F #F() expressions are good for memory
 from django.core.mail import send_mail
 from django.forms import inlineformset_factory
 from django.db import transaction
+from django.core.cache import cache
 
 # Create your views here.
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -198,8 +199,8 @@ def question_answers(request, quiz_pk, question_pk):
     return render(request, 'quiz/answers_list.html', {'form':form, 'formset': formset, 'quiz':quiz, 'question':question})
 
 #--------------------
-    #Students
-score = 0
+
+
 def start_quiz(request, quiz_pk, question_pk):
     data = dict()
     quiz = get_object_or_404(QuizName, pk=quiz_pk)
@@ -207,12 +208,11 @@ def start_quiz(request, quiz_pk, question_pk):
     next_question = Question.objects.filter(quiz=quiz, id__gt=question_pk).order_by('id').first()
     correct_answer = Answer.objects.get(question=question, is_correct=True)
     number_of_questions = Question.objects.filter(quiz=quiz_pk).count()
-    global score
     if request.method == 'POST':
         form = TakeQuizForm(request.POST, question=question)
         if form.is_valid():
-            if correct_answer == form.cleaned_data['answer']:
-                score += 1
+            # if correct_answer == form.cleaned_data['answer']:
+            #     score += 1
             if next_question != None:
                 data['form_is_valid'] = True
                 #data['html_form'] = render_to_string('quiz/partial_radio.html', {'qui':14, 'ques':next_question.id, 'quiz':quiz, 'form':form, 'question':question, 'correct_answer': correct_answer}, request=request)
@@ -220,11 +220,11 @@ def start_quiz(request, quiz_pk, question_pk):
                 return JsonResponse(data)
             else:
                 data['form_is_valid'] = False
-                if score < (number_of_questions//2):
-                    data['message'] = 'As expected. You are an idiot. Your miserable score is ' + str(score) + '/' + str(number_of_questions)
-                else:
-                    data['message'] = 'Unbelivable. Your little brain got ' + str(score) + '/' + str(number_of_questions)
-                score = 0
+                # if score < (number_of_questions//2):
+                #     data['message'] = 'As expected. You are an idiot. Your miserable score is ' + str(score) + '/' + str(number_of_questions)
+                # else:
+                #     data['message'] = 'Unbelivable. Your little brain got ' + str(score) + '/' + str(number_of_questions)
+                # score = 0
                 return JsonResponse(data)
 
 
