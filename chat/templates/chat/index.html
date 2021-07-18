@@ -1,0 +1,64 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Quisko chat</h2>
+                <div class="col-12">
+                    <h3>Type new room or pick one</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+<div class="container">
+    <div class="section-header text-center">
+      <form action="." method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <h3 style="text-align:center;margin-bottom:25px;">Type new room</h3>
+            <input type="text" class="form-control" name="room_name" autocomplete="off" id="id_room_name" required placeholder="Type room name..."/>
+        </div>
+        <input class="form-submit" type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="list-group list-group-flush list-group-formset">
+      <div style="text-align: center;" class="mid">
+            <p style="margin-top:20px;font-weight:bold;font-size:20px;color:#000;">Or pick one existing</p>
+      {% for room in queryset %}
+        <div class="list-group-item">
+              <a style="font-weight:500;"href="{% url 'chat:user' room.id %}">{{room.room_name}}</a>
+        </div>
+      {% endfor %}
+    </div>
+    </div>
+</div>
+
+    <!-- <div class="field">
+      <label>Room name</label>
+      <input type="text" id="room-name"  placeholder="Enter room name...">
+    </div>
+    <div class="field">
+      <label>User name</label>
+      <input type="text" id="user-name"  placeholder="Enter username...">
+    </div>
+    <button type="button" name="button" id="room-name-submit">Submit</button>
+
+    <script type="text/javascript">
+        document.querySelector('#room-name-submit').onclick = function(e){
+
+          var room = document.querySelector('#room-name').value;
+          var user = document.querySelector('#user-name').value;
+
+          window.location.replace(room + '/?username=' + user);
+        };
+    </script> -->
+{% endblock %}

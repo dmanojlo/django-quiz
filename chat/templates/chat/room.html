@@ -1,0 +1,47 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Quisko chat</h2>
+                <div class="col-12">
+                    <h3>Enter username</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+<div class="container">
+    <div class="section-header text-center">
+      <div class="form-group">
+          <h3 style="text-align:center;margin-bottom:25px;">Room name: {{room_name}}</h3>
+          <input type="text" class="form-control" autocomplete="off" id="user-name"  placeholder="Enter username..."/>
+      </div>
+        <button type="button" class="form-submit" name="button" id="room-name-submit">Submit</button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+
+        var roomName = '{{room_name}}'
+
+         document.getElementById("user-name").required = true
+         document.querySelector('#room-name-submit').onclick = function(e){
+
+          var user = document.querySelector('#user-name').value;
+          var newUrl = '/chat/' + roomName + '/?username=' + user
+          window.location.replace(newUrl);
+        };
+    </script>
+{% endblock %}
