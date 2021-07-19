@@ -23,7 +23,8 @@
     <div class="section-header text-center">
       <div class="form-group">
           <h3 style="text-align:center;margin-bottom:25px;">Room name: {{room_name}}</h3>
-          <input type="text" class="form-control" autocomplete="off" id="user-name"  placeholder="Enter username..."/>
+            <input type="text" class="form-control" autocomplete="off" id="user-name" placeholder="Enter username..."/>
+            <div style="font-size:1rem;margin-top:10px;" class="invalid-feedback">Please choose a username!</div>
       </div>
         <button type="button" class="form-submit" name="button" id="room-name-submit">Submit</button>
     </div>
@@ -34,14 +35,20 @@
 {% block javascript %}
     <script type="text/javascript">
 
-        var roomName = '{{room_name}}'
 
-         document.getElementById("user-name").required = true
+         var roomName = "{{room_name|cut:" "}}"
+
          document.querySelector('#room-name-submit').onclick = function(e){
 
           var user = document.querySelector('#user-name').value;
-          var newUrl = '/chat/' + roomName + '/?username=' + user
-          window.location.replace(newUrl);
+          if(user === ""){
+          document.querySelector(".invalid-feedback").style.display = "block"
+            //document.getElementById("user-name").required = true;
+          }
+          else{
+            var newUrl = '/chat/' + roomName + '/?username=' + user
+            window.location.replace(newUrl);
+          }
         };
     </script>
 {% endblock %}

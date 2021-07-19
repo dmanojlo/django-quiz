@@ -8,7 +8,7 @@ def index(request):
     if form.is_valid():
         room_model = form.save()
         return redirect('chat:user', room_model.pk)
-    queryset = Room.objects.order_by('-id')
+    queryset = Room.objects.order_by('-id')[:10]
     context = { 'form': form, 'queryset': queryset }
     return render(request, 'chat/index.html', context)
 

@@ -61,6 +61,7 @@
                     {% else %}
                     <a href="{% url 'account_login' %}" class="nav-item nav-link {% if url_name == 'account_login' %}active{% endif %}">Login</a>
                     <a href="{% url 'account_signup' %}" class="nav-item nav-link {% if url_name == 'account_signup' %}active{% endif %}">Register</a>
+                    <a href="{% url 'chat:index' %}" class="nav-item nav-link {% if url_name == 'index' %}active{% endif %}">Chat</a>
                     {% endif %}
                     {% endwith %}
                 </div>
