@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'uo7&vvmirxa5zlv)1ui!4eok*-+*ogu@46fm!&onv3wl6m-+cg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['quisko.herokuapp.com', '127.0.0.1']
 

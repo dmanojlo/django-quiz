@@ -232,3 +232,6 @@ def start_quiz(request, quiz_pk, question_pk):
         form = TakeQuizForm(question=question)
 
     return render(request, 'quiz/start_quiz.html', {'quiz':quiz, 'form':form, 'question':question, 'correct_answer': correct_answer, 'num_of_q':number_of_questions})
+
+
+#web: gunicorn django_quiz.wsgi --log-file -
