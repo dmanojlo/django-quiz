@@ -68,7 +68,7 @@
         messageInputDom.value= '';
       };
 
-      const chatSocket = new WebSocket('wss://' + window.location.host + '/wss/chat/' + roomName + '/');
+      const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
 
       chatSocket.onmessage = function (e){
         const msgerChat = document.querySelector(".msger-chat");
