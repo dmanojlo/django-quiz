@@ -22,7 +22,7 @@
     <section class="msger">
       <header class="msger-header">
         <div class="msger-header-title">
-          <i class="fas fa-comment-alt"></i> SimpleChat
+          <i class="fas fa-comment-alt"></i> Online users:<span class="soc"></span>
         </div>
         <div class="msger-header-options">
           <span><i class="fas fa-cog"></i></span>
@@ -57,25 +57,32 @@
             }
               });
 
+
       document.querySelector('.msger-send-btn').onclick = function(e){
         const messageInputDom = document.querySelector('#input');
         const message = messageInputDom.value;
         chatSocket.send(JSON.stringify({
             'message': message,
             'username': user_username,
+            'user': user_username,
         }));
 
         messageInputDom.value= '';
       };
 
+
       var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-      const chatSocket = new WebSocket(ws_scheme + '://' + window.location.host + '/ws/chat/' + roomName + '/');
+      const chatSocket = new WebSocket(ws_scheme + '://' + window.location.host + '/ws/chat/' + roomName + '/' + user_username + '/');
+
 
       chatSocket.onmessage = function (e){
         const msgerChat = document.querySelector(".msger-chat");
         var side = 'right';
         const data = JSON.parse(e.data);
-        console.log(data)
+        if(data['user'] !== undefined){
+          document.querySelector(".soc").innerHTML = data['user']
+        }
+        console.log(data['user'])
         if(data['username'] === user_username){
         side = 'right'
         }
@@ -110,7 +117,9 @@
           return `${h.slice(-2)}:${m.slice(-2)}`;
         }
 
+        if(data.message !== undefined && data.message !==''){
          appendMessage(data.username,side,data.message);
+       }
         //document.querySelector('.msger-chat').value += (data.username + ':' + data.message + '\n')
         // document.querySelector('#user-hello').innerHTML = (data.tester)
         //document.querySelector('#chat-text').value += (data.username + ':' + data.message + '\n')

@@ -41,6 +41,7 @@
          document.querySelector('#room-name-submit').onclick = function(e){
 
           var user = document.querySelector('#user-name').value;
+          var user = user.replace(/\s/g, "");
           if(user === ""){
           document.querySelector(".invalid-feedback").style.display = "block"
             //document.getElementById("user-name").required = true;
